@@ -1,0 +1,9 @@
+{
+    "name": "zaheerabzal",
+    "image":"ghcr.io/bizcodepub/python3-uv:0.2.0",
+    // "runArgs": ["--userns=keep-id"],
+    // "containerEnv": {"HOME": "/root"},
+    "remoteUser": "root",
+    "forwardPorts": [8080]
+    
+}
