@@ -11,6 +11,11 @@ export default defineConfig({
       }),
     })
   ],
+
+  base: '/zabzal.github.io/',
+  build: {
+    outDir: 'docs'
+  },
   
   optimizeDeps: {
     exclude: ['@sveltejs/vite-plugin-svelte']
