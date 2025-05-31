@@ -12,7 +12,7 @@ export default defineConfig({
     })
   ],
 
-  base: '/zabzal.github.io/',
+  base: '/zabzal-site/',
   build: {
     outDir: 'docs'
   },
