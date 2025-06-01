@@ -48,10 +48,10 @@
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
           <button 
-            on:click={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
+            on:click={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
             class="px-8 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl font-medium"
           >
-            View My Work
+            Learn More
           </button>
           <button 
             on:click={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
