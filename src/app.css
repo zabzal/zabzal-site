@@ -77,6 +77,15 @@ h1, h2, h3, h4, h5, h6 {
   background: hsl(var(--primary-purple));
 }
 
+/* Logo */
+.logo {
+  max-height: 20px;   /* Set this to match your nav height */
+  width: auto;
+  display: block;
+}
+
+
+
 /* Animations */
 @keyframes fadeInUp {
   from {

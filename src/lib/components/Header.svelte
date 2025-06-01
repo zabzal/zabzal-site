@@ -50,9 +50,12 @@
       <!-- Logo -->
       <button 
         on:click={() => navigateToSection('hero')}
-        class="text-2xl font-bold text-gray-900 hover:text-purple-600 transition-colors duration-200"
+        class="w-24 focus:outline-none"
+        aria-label="Go to home"
       >
-        ZA
+        <svg class="logo w-full fill-gray-900 hover:fill-purple-600 transition-colors duration-200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:serif="http://www.serif.com/" viewBox="0 0 333 229" version="1.1" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;">
+          <path d="M3.18,0.728l174.549,0l-0,7.774l-120.842,186.915l106.708,0l-11.66,31.801l-151.935,-0l0.353,-8.127l119.428,-184.442l-116.601,-0.354l0,-33.567Z"/><path d="M205.289,0.728l36.041,-0.353l90.807,227.196l-36.04,0.353l-26.854,-66.427l-91.514,0.353l-6.36,14.487l-35.687,0.707l69.607,-176.316Zm18.02,40.988l-33.567,86.567l66.428,0.354l-32.861,-86.921Z"/>
+        </svg>
       </button>
 
       <!-- Desktop Navigation -->
