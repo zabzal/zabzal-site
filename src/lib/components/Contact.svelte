@@ -277,7 +277,7 @@
     <!-- Footer -->
     <div class="text-center mt-16 pt-8 border-t border-gray-200">
       <p class="text-gray-600">
-        © 2024 Zaheer Abzal. Built with 💜 using Svelte, Tailwind CSS, and Deno.
+        © 2025 Zaheer Abzal
       </p>
     </div>
   </div>
