@@ -11,6 +11,11 @@ export default defineConfig({
       }),
     })
   ],
+  resolve: {
+    alias: {
+      $lib: '/src/lib'
+    }
+  },
 
   base: '/zabzal-site/',
   build: {
