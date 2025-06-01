@@ -37,14 +37,13 @@
             Zaheer Abzal
           </h1>
           <p class="text-xl lg:text-2xl text-gray-600 mb-6">
-            Engineer Director, Developer, & Leader
+            Engineering Leader & Developer
           </p>
         </div>
 
         <p class="text-lg text-gray-700 mb-8 max-w-2xl leading-relaxed">
           Passionate about creating innovative digital solutions that bridge the gap between 
-          design and functionality. I specialize in building modern web applications with 
-          clean code and exceptional user experiences.
+          design and functionality. I specialize software product development and data & analytics.
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
