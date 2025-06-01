@@ -65,7 +65,12 @@
         <!-- Social Links -->
         <div class="flex justify-center lg:justify-start space-x-6 mt-8">
           {#each socialLinks as social}
-            <a href={social.href} class="text-gray-600 hover:text-purple-600 transition-colors duration-200">
+            <a 
+              href={social.href} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="text-gray-600 hover:text-purple-600 transition-colors duration-200"
+            >
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d={social.icon} />
               </svg>

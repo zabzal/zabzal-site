@@ -133,6 +133,8 @@
             {#each socialLinks as social}
               <a
                 href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 class="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-gray-600 hover:text-purple-600 hover:bg-purple-50 transition-all duration-200 transform hover:scale-110 shadow-sm hover:shadow-md"
                 title={social.name}
               >
