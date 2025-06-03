@@ -1,17 +1,29 @@
 <script lang="ts">
   import Header from './lib/components/Header.svelte';
-  import Hero from './lib/components/Hero.svelte';
-  import About from './lib/components/About.svelte';
-  import Portfolio from './lib/components/Portfolio.svelte';
-  import Skills from './lib/components/Skills.svelte';
-  import Contact from './lib/components/Contact.svelte';
+  import { currentPath } from './lib/router';
+  import Home from './lib/pages/Home.svelte';
+  import AboutPage from './lib/pages/AboutPage.svelte';
+  import PortfolioPage from './lib/pages/PortfolioPage.svelte';
+  import SkillsPage from './lib/pages/SkillsPage.svelte';
+  import ContactPage from './lib/pages/ContactPage.svelte';
   import './app.css';
 
-  // Smooth scrolling function
-  function scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  $: currentComponent = getComponentForPath($currentPath);
+
+  function getComponentForPath(path: string) {
+    switch (path) {
+      case '/':
+        return Home;
+      case '/about':
+        return AboutPage;
+      case '/portfolio':
+        return PortfolioPage;
+      case '/skills':
+        return SkillsPage;
+      case '/contact':
+        return ContactPage;
+      default:
+        return Home;
     }
   }
 </script>
@@ -22,15 +34,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 </svelte:head>
 
-<div class="min-h-screen bg-gray-50">
-  <Header on:navigate={(e) => scrollToSection(e.detail)} />
+<div class="min-h-screen bg-gray-50 flex flex-col">
+  <Header />
   
-  <main>
-    <Hero />
-    <About />
-    <Portfolio />
-    <Skills />
-    <Contact />
+  <main class="flex-grow">
+    <div class="pt-16"> <!-- Add padding-top to account for fixed header -->
+      <svelte:component this={currentComponent} />
+    </div>
   </main>
 </div>
 

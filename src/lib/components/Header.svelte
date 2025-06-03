@@ -1,59 +1,33 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
   import { onMount } from 'svelte';
+  import { navigate, currentPath } from '../router';
 
-  const dispatch = createEventDispatcher();
-  let isScrolled = false;
   let isMobileMenuOpen = false;
-  let activeSection = 'hero';
-
-  onMount(() => {
-    const sections = navItems.map(item => document.getElementById(item.id));
-    
-    const handleScroll = () => {
-      isScrolled = window.scrollY > 50;
-      
-      // Find the current section in view
-      const current = sections.reduce((current, section) => {
-        if (!section) return current;
-        const bounds = section.getBoundingClientRect();
-        const offset = 200; // Adjust offset to trigger active state earlier
-        return bounds.top - offset <= 0 ? section : current;
-      }, sections[0]);
-      
-      if (current) {
-        activeSection = current.id;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  });
-
-  function navigateToSection(sectionId: string) {
-    dispatch('navigate', sectionId);
-    isMobileMenuOpen = false;
-  }
 
   const navItems = [
-    { id: 'hero', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'portfolio', label: 'Portfolio' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'contact', label: 'Contact' }
+    { id: '/', label: 'Home' },
+    { id: '/about', label: 'About' },
+    { id: '/portfolio', label: 'Portfolio' },
+    { id: '/skills', label: 'Skills' },
+    { id: '/contact', label: 'Contact' }
   ];
+
+  function navigateToSection(path: string) {
+    navigate(path);
+    isMobileMenuOpen = false;
+  }
 </script>
 
-<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 {isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'}">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
   <nav class="container mx-auto px-6 py-4">
     <div class="flex justify-between items-center">
       <!-- Logo -->
       <button 
-        on:click={() => navigateToSection('hero')}
+        on:click={() => navigateToSection('/')}
         class="w-24 focus:outline-none"
         aria-label="Go to home"
       >
-        <svg class="logo w-full fill-gray-900 hover:fill-purple-600 transition-colors duration-200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:serif="http://www.serif.com/" viewBox="0 0 333 229" version="1.1" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;">
+        <svg class="logo w-full fill-gray-900 hover:fill-purple-600 transition-colors duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 333 229" version="1.1" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;">
           <path d="M3.18,0.728l174.549,0l-0,7.774l-120.842,186.915l106.708,0l-11.66,31.801l-151.935,-0l0.353,-8.127l119.428,-184.442l-116.601,-0.354l0,-33.567Z"/><path d="M205.289,0.728l36.041,-0.353l90.807,227.196l-36.04,0.353l-26.854,-66.427l-91.514,0.353l-6.36,14.487l-35.687,0.707l69.607,-176.316Zm18.02,40.988l-33.567,86.567l66.428,0.354l-32.861,-86.921Z"/>
         </svg>
       </button>
@@ -64,7 +38,7 @@
           <button
             on:click={() => navigateToSection(item.id)}
             class="text-gray-700 hover:text-purple-600 px-4 py-2 rounded-lg transition-all duration-200 font-medium
-                   {activeSection === item.id ? 'bg-purple-100 text-purple-600' : 'hover:bg-purple-50'}"
+                   {$currentPath === item.id ? 'bg-purple-100 text-purple-600' : 'hover:bg-purple-50'}"
           >
             {item.label}
           </button>
@@ -94,7 +68,7 @@
           <button
             on:click={() => navigateToSection(item.id)}
             class="block w-full text-left px-4 py-2 text-gray-700 hover:text-purple-600 transition-all duration-200 font-medium rounded-lg
-                   {activeSection === item.id ? 'bg-purple-100 text-purple-600' : 'hover:bg-purple-50'}"
+                   {$currentPath === item.id ? 'bg-purple-100 text-purple-600' : 'hover:bg-purple-50'}"
           >
             {item.label}
           </button>
