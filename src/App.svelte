@@ -13,7 +13,7 @@
   function getComponentForPath(path: string) {
     switch (path) {
       case '/':
-        return HomePage;
+        return Home;
       case '/about':
         return AboutPage;
       case '/portfolio':
