@@ -16,21 +16,15 @@ export default defineConfig({
       $lib: '/src/lib'
     }
   },
-
-  base: '/zabzal-site/',
+  base: './',
   build: {
-    outDir: 'docs'
+    outDir: 'docs',
+    rollupOptions: {
+      input: 'index.html' // Use index.html as the single entry point
+    }
   },
-  
-  optimizeDeps: {
-    exclude: ['@sveltejs/vite-plugin-svelte']
-  },
-  
   server: {
     host: '0.0.0.0',
-    port: 5000,
-    historyApiFallback: true
-  },
-  
-  publicDir: 'public',
+    port: 5000
+  }
 });
