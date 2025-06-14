@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { navigate } from '../router';
 
   export let posts: { title: string; excerpt: string; link: string }[] = [];
 
@@ -26,7 +27,7 @@
   });
 </script>
 
-<section bind:this={sectionElement} class="py-20 bg-white">
+<section bind:this={sectionElement} class="py-20 bg-white min-h-screen">
   <div class="container mx-auto px-6">
     <div class="max-w-4xl mx-auto">
       <!-- Section Header -->
@@ -46,7 +47,7 @@
           <article class="transform transition-all duration-1000 delay-300 {isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}">
             <h3 class="text-2xl font-bold text-gray-900 mb-4">{post.title}</h3>
             <p class="text-gray-700 leading-relaxed mb-4">{post.excerpt}</p>
-            <a href={post.link} class="text-purple-600 hover:underline">Read more</a>
+            <a href={post.link} role="button" on:click={(e) => { e.preventDefault(); navigate(post.link); }} on:keydown={(e) => { if (e.key === 'Enter') navigate(post.link); }} class="text-purple-600 hover:underline cursor-pointer">Read more</a>
           </article>
         {/each}
       </div>

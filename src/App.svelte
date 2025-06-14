@@ -7,11 +7,15 @@
   import SkillsPage from './lib/pages/SkillsPage.svelte';
   import ContactPage from './lib/pages/ContactPage.svelte';
   import BlogPage from './lib/pages/BlogPage.svelte';
+  import BlogPostPage from './lib/pages/BlogPostPage.svelte';
   import './app.css';
 
   $: currentComponent = getComponentForPath($currentPath);
 
   function getComponentForPath(path: string) {
+    if (path.startsWith('/blog/') && path !== '/blog') {
+      return BlogPostPage;
+    }
     switch (path) {
       case '/':
         return Home;
