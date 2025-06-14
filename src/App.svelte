@@ -6,6 +6,7 @@
   import PortfolioPage from './lib/pages/PortfolioPage.svelte';
   import SkillsPage from './lib/pages/SkillsPage.svelte';
   import ContactPage from './lib/pages/ContactPage.svelte';
+  import BlogPage from './lib/pages/BlogPage.svelte';
   import './app.css';
 
   $: currentComponent = getComponentForPath($currentPath);
@@ -22,6 +23,8 @@
         return SkillsPage;
       case '/contact':
         return ContactPage;
+      case '/blog':
+        return BlogPage;
       default:
         return Home;
     }

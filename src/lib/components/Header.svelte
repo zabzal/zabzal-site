@@ -6,8 +6,8 @@
 
   const navItems = [
     { id: '/', label: 'Home' },
+    { id: '/blog', label: 'Blog' },
     { id: '/about', label: 'About' },
-    { id: '/portfolio', label: 'Portfolio' },
     { id: '/skills', label: 'Skills' },
     { id: '/contact', label: 'Contact' }
   ];
