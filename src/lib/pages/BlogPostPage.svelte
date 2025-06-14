@@ -37,11 +37,29 @@
 </script>
 
 {#if blogPost}
-  <div class="bg-gray-50 min-h-screen">
-    <main class="bg-white container mx-auto px-6 py-10">
-      <article>
-        <h1 class="text-4xl font-bold text-gray-900 mb-4">{blogPost.title}</h1>
-        <div class="text-gray-700 leading-relaxed">{blogPost.content}</div>
+  <div class="bg-white min-h-screen">
+    <main class="container mx-auto px-6 py-10">
+      <article class="max-w-4xl mx-auto">
+        <!-- Title -->
+        <h1 class="text-5xl font-bold text-gray-900 mb-4">{blogPost.title}</h1>
+        <p class="text-xl text-gray-700 mb-6">A deep dive into the topic</p>
+
+        <!-- Author and Date -->
+        <div class="text-gray-600 text-sm mb-4">
+          <p>By Zaheer Abzal</p>
+          <p>June 14, 2025</p>
+        </div>
+
+        <!-- Featured Image -->
+        <div class="mb-8">
+          <div class="w-full h-64 bg-gray-200 rounded-lg"></div>
+          <p class="text-gray-500 text-sm mt-2">Image credit: Unsplash</p>
+        </div>
+
+        <!-- Content -->
+        <div class="text-gray-700 text-lg leading-relaxed space-y-6">
+          {blogPost.content}
+        </div>
       </article>
     </main>
 

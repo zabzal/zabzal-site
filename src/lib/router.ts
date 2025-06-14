@@ -23,23 +23,7 @@ currentPath.subscribe((path) => {
     return regex.test(path);
   });
 
-  if (matchedRoute) {
-    const Component = routes.get(matchedRoute);
-    const params: Record<string, string> = {};
-    const paramNames = matchedRoute.match(/:\w+/g) || [];
-    const paramValues = path.match(new RegExp(matchedRoute.replace(/:\w+/g, '([^/]+)')))?.slice(1) || [];
-
-    paramNames.forEach((name, index) => {
-      params[name.substring(1)] = paramValues[index];
-    });
-
-    const target = document.querySelector('#app');
-    if (target) {
-      new Component({ target, props: { params } });
-    } else {
-      console.error('App container not found');
-    }
-  } else {
+  if (!matchedRoute) {
     console.error('No route matched for path:', path);
   }
 });
