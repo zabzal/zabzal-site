@@ -1,44 +1,52 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+
   export let posts: { title: string; excerpt: string; link: string }[] = [];
+
+  let sectionElement: HTMLElement;
+  let isVisible = false;
+
+  onMount(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            isVisible = true;
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionElement) {
+      observer.observe(sectionElement);
+    }
+
+    return () => observer.disconnect();
+  });
 </script>
 
-<section class="py-20 bg-gray-50">
+<section bind:this={sectionElement} class="py-20 bg-white">
   <div class="container mx-auto px-6">
-    <!-- Header Section -->
-    <header class="mb-12">
-      <h1 class="text-5xl font-bold text-gray-900">Blog</h1>
-      <p class="mt-4 text-lg text-gray-600">Insights, stories, and ideas from our team.</p>
-    </header>
-
-    <!-- Featured Articles Section -->
-    <div class="mb-12">
-      <h2 class="text-3xl font-semibold text-gray-800 mb-6">Featured Articles</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {#each posts.slice(0, 2) as post}
-          <article class="p-6 bg-white rounded-lg shadow-md flex items-center">
-            <div class="flex-1">
-              <h3 class="text-2xl font-semibold text-gray-800">{post.title}</h3>
-              <p class="mt-2 text-gray-600">{post.excerpt}</p>
-              <a href={post.link} class="mt-4 inline-block text-blue-500 hover:underline">Read more</a>
-            </div>
-            <div class="ml-4 w-24 h-24 bg-gray-200 rounded-lg"></div>
-          </article>
-        {/each}
+    <div class="max-w-4xl mx-auto">
+      <!-- Section Header -->
+      <div class="text-center mb-16 transform transition-all duration-1000 {isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}">
+        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          Blog
+        </h2>
+        <div class="w-20 h-1 bg-purple-600 mx-auto mb-6"></div>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Discover the latest insights, stories, and ideas from our team.
+        </p>
       </div>
-    </div>
 
-    <!-- Additional Posts Section -->
-    <div>
-      <h2 class="text-3xl font-semibold text-gray-800 mb-6">More Articles</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {#each posts.slice(2) as post}
-          <article class="p-6 bg-white rounded-lg shadow-md flex items-center">
-            <div class="flex-1">
-              <h3 class="text-xl font-semibold text-gray-800">{post.title}</h3>
-              <p class="mt-2 text-gray-600">{post.excerpt}</p>
-              <a href={post.link} class="mt-4 inline-block text-blue-500 hover:underline">Read more</a>
-            </div>
-            <div class="ml-4 w-24 h-24 bg-gray-200 rounded-lg"></div>
+      <!-- Blog Posts -->
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        {#each posts as post}
+          <article class="transform transition-all duration-1000 delay-300 {isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">{post.title}</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">{post.excerpt}</p>
+            <a href={post.link} class="text-purple-600 hover:underline">Read more</a>
           </article>
         {/each}
       </div>

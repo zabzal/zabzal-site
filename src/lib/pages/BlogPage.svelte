@@ -56,5 +56,10 @@
   ];
 </script>
 
-<Blog posts={mockPosts} />
-<Footer />
+<div class="bg-gray-50 min-h-screen">
+  <main class="container mx-auto px-6 py-10">
+    <Blog posts={mockPosts} class="text-gray-800" />
+  </main>
+
+  <Footer class="bg-gray-100 text-gray-600" />
+</div>
